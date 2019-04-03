@@ -1,8 +1,10 @@
-/*https://leetcode-cn.com/contest/weekly-contest-128/problems/numbers-with-repeated-digits/
+/*
 1012:给定正整数 N，返回小于等于 N 且具有至少 1 位重复数字的正整数。（N会很大）
-思路：数位DP 记忆化搜索
+思路：数位DP 状态压缩 记忆化搜索
 10000： 889x 899x 
-DP[i][digit][succ]表示当前从高位往低位尝试，已经确定到了第i位，前面已经使用过的数字情况为digit（长度为10的01串，状态压缩），succ表示前面是否有数字已经重复
+DP[i][digit][succ]表示当前从高位往低位尝试，已经确定到了第i位，前面已经使用过的数字情况为digit（长度为10的01串，状态压缩），
+succ表示前面是否有数字已经重复
+lead 是否前导0，flag 是否严格等于
 */
 
 int num[15],tot;
