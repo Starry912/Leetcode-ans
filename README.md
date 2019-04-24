@@ -1,2 +1,2 @@
 # Leetcode-ans
-code using c++
+with codes in C++
