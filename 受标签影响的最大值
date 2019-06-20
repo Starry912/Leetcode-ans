@@ -1,0 +1,39 @@
+/*1090. 我们有一个项的集合，其中第 i 项的值为 values[i]，标签为 labels[i]。
+我们从这些项中选出一个子集 S，这样一来：
+|S| <= num_wanted
+对于任意的标签 L，子集 S 中标签为 L 的项的数目总满足 <= use_limit。
+返回子集 S 的最大可能的 和。
+/*
+const int MAXN=20000+50;
+struct Node{
+    int value;
+    int label;
+}node[MAXN];
+
+inline bool cmp(const Node &a, const Node &b){
+    return a.value>b.value;
+}
+
+
+class Solution {
+public:
+    int largestValsFromLabels(vector<int>& values, vector<int>& labels, int num_wanted, int use_limit) {
+        int n=values.size();
+        for(int i=0;i<n;i++) node[i].value=values[i], node[i].label=labels[i];
+        sort(node, node+n, cmp);
+        
+        int t_cnt=0;
+        map<int,int> l_cnt; l_cnt.clear();
+        
+        int ans=0;
+        for (int i=0;t_cnt<num_wanted && i<n;i++){
+            int l=node[i].label,v=node[i].value;
+            if (l_cnt[l]+1<=use_limit){
+                ans += v;
+                ++l_cnt[l];
+                ++t_cnt;
+            }
+        }
+        return ans;
+    }
+};
